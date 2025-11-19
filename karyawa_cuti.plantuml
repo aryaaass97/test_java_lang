@@ -1,0 +1,30 @@
+@startuml
+|Karyawan|
+start
+:Ajukan Cuti;
+
+|Sistem|
+:Simpan Pengajuan;
+:Kirim Notifikasi ke Atasan;
+
+|Atasan|
+:Review Pengajuan;
+if (Disetujui?) then (ya)
+  |HR|
+  :Verifikasi Kuota Cuti;
+  if (Kuota Cukup?) then (ya)
+    :Approve Cuti;
+  else (tidak)
+    :Reject - Kuota Habis;
+  endif
+else (tidak)
+  :Reject dengan Alasan;
+endif
+
+|Sistem|
+:Kirim Email Notifikasi;
+
+|Karyawan|
+:Terima Notifikasi;
+stop
+@enduml
