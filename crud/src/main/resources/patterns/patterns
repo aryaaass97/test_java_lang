@@ -1,0 +1,17 @@
+WORD \b\w+\b
+NUMBER (?:[+-]?(?:[0-9]+))
+DATA .*?
+GREEDYDATA .*
+IP (?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)
+HTTPDATE %{MONTHDAY}/%{MONTH}/%{YEAR}:%{TIME} %{INT}
+LOGLEVEL (?:INFO|DEBUG|WARN|ERROR|TRACE)
+MONTHDAY (?:(?:[0-9]{2}))
+MONTH (?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)
+YEAR (?>\d\d\d\d)
+TIME (?:2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]
+HOSTNAME \b(?:[A-Za-z0-9][A-Za-z0-9\-]{0,62})(?:\.(?:[A-Za-z0-9][A-Za-z0-9\-]{0,62}))*\b
+IPORHOST (?:%{IP}|%{HOSTNAME})
+
+
+# some convenience patterns
+HTTPDATE_ALT %{MONTHDAY}/%{MONTH}/%{YEAR}:%{TIME} %{INT}
